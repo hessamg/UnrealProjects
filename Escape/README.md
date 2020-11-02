@@ -1,4 +1,3 @@
 # Escape (Work in Progress)
-### This is a small game. 
-### The Player needs to find a way to escape for the castle.
+### The Player needs to solve puzzles and find a way to escape for the castle.
 
