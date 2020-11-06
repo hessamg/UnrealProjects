@@ -10,8 +10,8 @@ void UBullCowCartridge::BeginPlay() // When the game starts
 
     SetupGame();
 
-    PrintLine(TEXT("Please press TAB only once to be able to\ntype.")); 
-    // PrintLine(TEXT("The HiddenWord is: %s."), *HiddenWord); // Debug Line
+    PrintLine(TEXT("Please press TAB to be able to type or\nfeel free to look around.")); 
+    // PrintLine(TEXT("DEBUG: The HiddenWord is => %s."), *HiddenWord); // Debug Line
 }
 
 void UBullCowCartridge::OnInput(const FString &PlayerInput) // When the player hits enter
