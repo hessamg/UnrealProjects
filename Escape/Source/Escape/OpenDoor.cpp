@@ -1,10 +1,9 @@
 // Developed by Sam Ganjian 2020.
+#include "OpenDoor.h"
 
 #include "Engine/World.h"
 #include "GameFramework/Actor.h"
 #include "GameFramework/PlayerController.h"
-
-#include "OpenDoor.h"
 
 // Sets default values for this component's properties
 UOpenDoor::UOpenDoor()
@@ -45,7 +44,7 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 	}
 	else
 	{
-		if (GetWorld()->GetTimeSeconds() - DoorLastOpenedTimeInSeconds  > DoorCloseDelay)
+		if (GetWorld()->GetTimeSeconds() - DoorLastOpenedTimeInSeconds > DoorCloseDelay)
 		{
 			CloseDoor(DeltaTime);
 		}

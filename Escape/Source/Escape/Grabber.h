@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include <tuple>
+
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "PhysicsEngine/PhysicsHandleComponent.h"
@@ -23,14 +25,26 @@ protected:
 public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
+
 private:
+	void FindPhysicsHandle();
+	void SetupInputComponent();
+
+	// Return the first actor within reach with physics body.
+	FHitResult GetFisrtPhysicsObjectInReach() const;
+
+	//Return the Line Trace end.
+	FVector GetPlayersReach() const;
+
+	// Get Players Position in world.
+	std::tuple<FVector, FRotator> GetPlayersWorldPosition() const;
+
 	void Grab();
 	void Release();
 
 private:
 	float Reach = 100.f;
 
-	UPhysicsHandleComponent* PhysicsHandle = nullptr;
-	UInputComponent* InputComponent = nullptr;
-
+	UPhysicsHandleComponent *PhysicsHandle = nullptr;
+	UInputComponent *InputComponent = nullptr;
 };
