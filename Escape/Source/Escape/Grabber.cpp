@@ -82,7 +82,7 @@ FHitResult UGrabber::GetFisrtPhysicsObjectInReach() const
 
 FVector UGrabber::GetPlayersReach() const
 {
-	return std::get<0>(GetPlayersWorldPosition()) + std::get<1>(GetPlayersWorldPosition()).Vector() * Reach * 2;
+	return std::get<0>(GetPlayersWorldPosition()) + std::get<1>(GetPlayersWorldPosition()).Vector() * Reach;
 }
 
 std::tuple<FVector, FRotator> UGrabber::GetPlayersWorldPosition() const
@@ -102,14 +102,16 @@ void UGrabber::Grab()
 	const auto HitResult = GetFisrtPhysicsObjectInReach();
 	UPrimitiveComponent *ComponentToGrab = HitResult.GetComponent();
 
-	if (HitResult.GetActor())
-		PhysicsHandle->GrabComponentAtLocation(
-			ComponentToGrab,
-			NAME_None,
-			GetPlayersReach());
+	if (HitResult.GetActor() && PhysicsHandle)
+	{
+		PhysicsHandle->GrabComponentAtLocation(ComponentToGrab, NAME_None, GetPlayersReach());
+	}
 }
 
 void UGrabber::Release()
 {
-	PhysicsHandle->ReleaseComponent();
+	if (PhysicsHandle)
+	{
+		PhysicsHandle->ReleaseComponent();
+	}
 }
