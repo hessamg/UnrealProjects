@@ -45,6 +45,9 @@ private:
 private:
 	float Reach = 200.f;
 
+	UPROPERTY()
 	UPhysicsHandleComponent *PhysicsHandle = nullptr;
+	
+	UPROPERTY()
 	UInputComponent *InputComponent = nullptr;
 };

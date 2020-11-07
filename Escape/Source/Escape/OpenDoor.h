@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Components/AudioComponent.h"
 #include "Engine/TriggerVolume.h"
 #include "OpenDoor.generated.h"
 
@@ -25,13 +26,18 @@ public:
 	virtual void TickComponent(float DeltaTimSe, ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
 
 private:
+	void GetPressurePlate();
 	void OpenDoor(const float &DeltaTime);
 	void CloseDoor(const float &DeltaTime);
 	float TotalMassofActors() const;
+	void GetAudioComponent();
 
 private:
 	float InitialYaw;
 	float CurrentYaw;
+
+	bool PlayedOpenDoorSound = false;
+	bool PlayedCloseDoorSound = false;
 
 	UPROPERTY(EditAnywhere)
 	float MassToOpenDoor = 50.f;
@@ -52,4 +58,7 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	ATriggerVolume *PressurePlate = nullptr;
+
+	UPROPERTY()
+	UAudioComponent *AudioComponent = nullptr;
 };
