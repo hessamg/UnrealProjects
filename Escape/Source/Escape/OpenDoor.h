@@ -37,7 +37,6 @@ private:
 	float CurrentYaw;
 
 	bool PlayedOpenDoorSound = false;
-	bool PlayedCloseDoorSound = false;
 
 	UPROPERTY(EditAnywhere)
 	float MassToOpenDoor = 50.f;
