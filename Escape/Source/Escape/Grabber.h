@@ -43,7 +43,7 @@ private:
 	void Release();
 
 private:
-	float Reach = 200.f;
+	float Reach = 220.f;
 
 	UPROPERTY()
 	UPhysicsHandleComponent *PhysicsHandle = nullptr;
