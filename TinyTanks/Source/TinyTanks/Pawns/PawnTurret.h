@@ -13,7 +13,7 @@ class TINYTANKS_API APawnTurret : public APawnBase
 
 public:
 	// Sets default values for this pawn's properties
-	APawnTurret();
+	APawnTurret(){};
 
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
