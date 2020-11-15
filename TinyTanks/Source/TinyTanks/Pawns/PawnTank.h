@@ -4,19 +4,19 @@
 
 #include "CoreMinimal.h"
 #include "PawnBase.h"
-#include "PawnAttack.generated.h"
+#include "PawnTank.generated.h"
 
 class USpringArmComponent;
 class UCameraComponent;
 
 UCLASS()
-class TINYTANKS_API APawnAttack : public APawnBase
+class TINYTANKS_API APawnTank : public APawnBase
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this pawn's properties
-	APawnAttack();
+	APawnTank();
 
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -34,4 +34,17 @@ private:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component", meta = (AllowPrivateAccess = "true"))
 	UCameraComponent *Camera;
+
+	FVector MoveDirection;
+	FQuat RotationDirection;
+
+	float MoveSpeed = 100.0f;
+	float RotateSpeed = 100.0f;
+
+	void CalculateMoveInput(float Value);
+	void CalculateRotateInput(float Value);
+
+	void Move();
+	void Rotate();
+
 };
