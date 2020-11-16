@@ -12,8 +12,6 @@ class TINYTANKS_API APawnTurret : public APawnBase
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this pawn's properties
-	APawnTurret(){};
 
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

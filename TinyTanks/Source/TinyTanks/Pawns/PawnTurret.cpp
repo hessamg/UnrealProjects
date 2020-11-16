@@ -4,15 +4,12 @@
 
 #include"Kismet/GameplayStatics.h"
 
-// APawnTurret::APawnTurret()
-// {
-//     GetWorld()->GetTimerManager().SetTimer(FireRateTimerHandle, this, &APawnTurret::CheckfireCondition, FireRate, true);
-// }
-
 // Called when the game starts or when spawned
 void APawnTurret::BeginPlay()
 {
     Super::BeginPlay();
+    
+    GetWorld()->GetTimerManager().SetTimer(FireRateTimerHandle, this, &APawnTurret::CheckfireCondition, FireRate, true);
 }
 
 // Called every frame
