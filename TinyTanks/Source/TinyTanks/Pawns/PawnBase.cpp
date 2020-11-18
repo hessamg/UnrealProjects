@@ -26,26 +26,25 @@ APawnBase::APawnBase()
 	ProjectileSpawnPoint->SetupAttachment(TurretMesh);
 
 	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health Component"));
-
 }
 
 void APawnBase::RotateTurret(FVector LookAtTarget)
 {
 	const auto LookAtTargetCleaned = FVector(LookAtTarget.X, LookAtTarget.Y, TurretMesh->GetComponentLocation().Z);
 	const auto StartLocation = TurretMesh->GetComponentLocation();
-	const FRotator TurratRotation = FVector( LookAtTargetCleaned - StartLocation).Rotation();
+	const FRotator TurratRotation = FVector(LookAtTargetCleaned - StartLocation).Rotation();
 
 	TurretMesh->SetWorldRotation(TurratRotation);
 }
 
 void APawnBase::Fire()
 {
-	if(AProjectileClass)
+	if (AProjectileClass)
 	{
 		const FVector SpawnLocation = ProjectileSpawnPoint->GetComponentLocation();
 		const FRotator SpawnRotation = ProjectileSpawnPoint->GetComponentRotation();
 
-		AProjectileBase* TempProjectile = GetWorld()->SpawnActor<AProjectileBase>(AProjectileClass, SpawnLocation, SpawnRotation);
+		AProjectileBase *TempProjectile = GetWorld()->SpawnActor<AProjectileBase>(AProjectileClass, SpawnLocation, SpawnRotation);
 		TempProjectile->SetOwner(this);
 	}
 }
@@ -54,4 +53,5 @@ void APawnBase::HandleDestruction()
 {
 	UGameplayStatics::SpawnEmitterAtLocation(this, DeathParticle, GetActorLocation());
 	UGameplayStatics::PlaySoundAtLocation(this, ExplodeSound, GetActorLocation());
+	GetWorld()->GetFirstPlayerController()->ClientPlayCameraShake(ExplodeShake);
 }
