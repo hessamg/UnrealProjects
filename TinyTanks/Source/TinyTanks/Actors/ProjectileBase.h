@@ -30,7 +30,7 @@ private:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Component", meta = (AllowPrivateAccess = "true"))
 	UParticleSystemComponent *ParticleTrail;
-	
+
 	//VARIABLES
 	UPROPERTY(EditDefaultsOnly, Category = "Damage")
 	TSubclassOf<UDamageType> DamageType;
@@ -43,7 +43,12 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = "Effects")
 	UParticleSystem *HitParticle;
-	
+
+	UPROPERTY(EditAnywhere, Category = "Effects")
+	USoundBase *HitSound;
+	UPROPERTY(EditAnywhere, Category = "Effects")
+	USoundBase *LaunchSound;
+
 	//FUNCTIONS
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent *HitComp, AActor *OtherActor, UPrimitiveComponent *OtherComp, FVector NormalImpulse, const FHitResult &Hit);
