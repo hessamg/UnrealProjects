@@ -8,6 +8,7 @@
 
 class APawnTank;
 class APawnTurret;
+class APlayerControllerBase;
 
 UCLASS()
 class TINYTANKS_API ATankGameModeBase : public AGameModeBase
@@ -32,8 +33,9 @@ protected:
 private:
 	APawnTank *PlayerTank;
 	int32 TargetTurrets = 0;
-	int32 GetTargetTurretsCount();
+	APlayerControllerBase* PlayerControllerRef;
 
+	int32 GetTargetTurretsCount();
 	void HandleGameStart();
 	void HandleGameOver(bool PlayerWon);
 };

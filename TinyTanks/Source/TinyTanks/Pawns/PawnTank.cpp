@@ -25,13 +25,12 @@ void APawnTank::BeginPlay()
 void APawnTank::HandleDestruction()
 {
     Super::HandleDestruction();
-
-    Destroy();
 }
 
 // Called every frame
 void APawnTank::Tick(float DeltaTime)
 {
+
     Super::Tick(DeltaTime);
 
     Rotate();

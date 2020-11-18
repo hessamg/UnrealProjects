@@ -42,5 +42,12 @@ void UHealthComponent::BeginPlay()
 	Health = DefaultHealth;
 	GameModeRef = Cast<ATankGameModeBase>(UGameplayStatics::GetGameMode(GetWorld()));
 
-	GetOwner()->OnTakeAnyDamage.AddDynamic(this, &UHealthComponent::TakeDamage);
+	if (GetOwner())
+	{
+		GetOwner()->OnTakeAnyDamage.AddDynamic(this, &UHealthComponent::TakeDamage);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Health component has no reference to Owner."));
+	}
 }
