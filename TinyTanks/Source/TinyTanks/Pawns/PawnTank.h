@@ -26,6 +26,8 @@ public:
 
 	virtual void HandleDestruction() override;
 
+	bool GetIsPlayerAlive() const;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -47,6 +49,7 @@ private:
 	float RotateSpeed = 200.0f;
 
 	APlayerController *PlayerControllerRef;
+	bool bIsPlayerAlive = true;
 
 	void CalculateMoveInput(float Value);
 	void CalculateRotateInput(float Value);
